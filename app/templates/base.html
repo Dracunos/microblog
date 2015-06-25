@@ -1,0 +1,45 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - microblog</title>
+        {% else %}
+        <title> Welcome to microblog</title>
+        {% endif %}
+        <style>
+        h1 {
+            text-align: center;
+            color: blue
+        }
+        body {
+            text-align: center;
+            background-color: #C1C1C1
+        }
+        poster {
+            float: left;
+            padding-left: 100px
+        }
+        text {
+            font-weight: bold
+        }
+        div {
+            padding-top: 25px;
+            padding-bottom: 25px
+        }
+        span {color: red;}
+        </style>
+    </head>
+    <body>
+        <div>Microblog: <a href="/index">Home</a></div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }} </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
